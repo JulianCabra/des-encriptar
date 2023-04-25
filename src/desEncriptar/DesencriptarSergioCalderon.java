@@ -29,21 +29,23 @@ public class DesencriptarSergioCalderon {
 	        	}
 	      }
 	    System.out.println(resultado);//muestra la palabra codificada
-	    String desencriptada="";
-	    String guardar= "";
-	    int potencia=4;
-	    for (int i = 1; i < resultado.length(); i++) {
-	    	if(resultado.substring(i, i+1) == "/") {
-	    		desencriptada="/";
-	    	    potencia=4;
-	    	}else {
-	    		if(resultado.substring(i, i+1) == "*") {
-	    			desencriptada += potencia;
-	    		}
-	    		potencia-=1;
-	    		guardar += desencriptada;
-	    	}
-	    	System.out.println(guardar);
+	    
+	    double guardar=0;
+	    String[] letras = resultado.split("/");
+	    int[] valoresPotencia = {16,8,4,2,1};
+	    for (int i = 0; i < letras.length; i++) {
+	    	int potencia=4;
+	    	int suma=0;
+			for (int j = 0; j < valoresPotencia.length; j++) {
+				if (letras[i].substring(j, j+1) .equals("*")) {
+					guardar= Math.pow(2, potencia);
+				}else {
+					guardar = 0;
+				}
+				potencia-=1;
+				suma+=guardar;
+			}
+			System.out.println(vector[suma]);
 		}
 	    
 	}
